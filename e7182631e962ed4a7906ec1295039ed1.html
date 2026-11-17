@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><!--pc-atualizar:inicio--><script>window.__PC_CFG__={"chave":"primeiro-contato-n2:v1","geradoEm":1794953750022,"arquivo":"Primeiro Contato com Chamados - Médias.xls","modificado":1794950832000,"pasta":"C:\\Users\\rafael.martins\\Desktop\\Atalhos - Planilhas\\PrimeiroContatoN2","total":873,"sheetjs":"https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"};
+(function(){
+  var C = window.__PC_CFG__;
+  try {
+    var s = JSON.parse(localStorage.getItem(C.chave) || 'null');
+    if (s && s.lidoEm > C.geradoEm && typeof s.raw === 'string') window.__PC__ = s;
+    else if (s) localStorage.removeItem(C.chave);
+  } catch (e) {}
+})();
+</script><!--pc-atualizar:fim-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1150">
+<title>Primeiro contato com chamados - Suporte N2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg-0:#070B2E; --bg-1:#0A1150; --bg-2:#0E1A5C;
+  --azul:#2F6BFF; --ciano:#33E1ED; --verde:#3CF2A5;
+  --texto:#EEF3FF; --suave:#A9B6E8; --mudo:#7B88BE;
+  --vidro:rgba(17,30,104,.55); --vidro-forte:rgba(20,36,124,.72);
+  --contorno:rgba(122,160,255,.20); --contorno-forte:rgba(51,225,237,.38);
+  --peso-normal:400; --peso-medio:500; --peso-forte:600; --peso-titulo:700;
+  --raio-g:20px; --raio-m:14px; --raio-p:10px;
+  --fonte:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --saida:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--bg-0)}
+body{margin:0;min-height:100vh;font-family:var(--fonte);color:var(--suave);line-height:1.5;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  background:
+    radial-gradient(1100px 620px at 78% -14%, rgba(47,107,255,.55), transparent 62%),
+    radial-gradient(800px 520px at 6% 108%, rgba(51,225,237,.16), transparent 60%),
+    linear-gradient(180deg,var(--bg-1) 0%,var(--bg-0) 70%);
+  background-attachment:fixed}
+/* trilhas de circuito ao fundo */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke='%2333E1ED' stroke-opacity='.16' stroke-width='1'%3E%3Cpath d='M0 40h60l20 20h60M240 120h-70l-20-20H90M40 240v-60l20-20v-50M200 0v50l-20 20v40M120 240v-40l30-30h90'/%3E%3Ccircle cx='140' cy='60' r='2.5' fill='%2333E1ED' fill-opacity='.35'/%3E%3Ccircle cx='90' cy='100' r='2.5' fill='%2333E1ED' fill-opacity='.35'/%3E%3Ccircle cx='60' cy='110' r='2.5' fill='%233CF2A5' fill-opacity='.35'/%3E%3Ccircle cx='180' cy='110' r='2.5' fill='%233CF2A5' fill-opacity='.35'/%3E%3C/svg%3E");
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 80%)}
+h1,h2,h3{color:var(--texto);text-wrap:balance;margin:0}
+button,select{font:inherit}
+.pagina{position:relative;isolation:isolate;max-width:1200px;margin:0 auto;
+  padding:max(28px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) max(110px,env(safe-area-inset-bottom)) max(20px,env(safe-area-inset-left))}
+
+/* ---------- cabeçalho ---------- */
+.topo{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 32px;margin-bottom:28px}
+.marca{display:inline-flex;align-items:center;gap:10px;color:var(--texto);font-weight:var(--peso-forte);font-size:15px}
+.marca svg{width:22px;height:20px;filter:drop-shadow(0 0 8px rgba(51,225,237,.5))}
+h1{font-size:clamp(30px,4.6vw,48px);font-weight:var(--peso-titulo);letter-spacing:-.035em;line-height:1.05;margin:14px 0 8px;
+  text-shadow:0 2px 24px rgba(47,107,255,.45)}
+.contexto{margin:0;font-size:15px;color:var(--suave);font-variant-numeric:tabular-nums}
+.contexto b{color:var(--texto);font-weight:var(--peso-medio)}
+.filtros{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.campo{position:relative}
+.campo select{appearance:none;-webkit-appearance:none;min-height:44px;padding:0 40px 0 16px;border:0;border-radius:999px;
+  background:var(--vidro-forte);color:var(--texto);font-size:16px;box-shadow:0 0 0 1px var(--contorno);cursor:pointer}
+.campo::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:2px solid var(--suave);border-bottom:2px solid var(--suave);transform:rotate(45deg);pointer-events:none}
+.segmentos{display:inline-flex;padding:4px;gap:2px;border-radius:999px;background:var(--vidro-forte);box-shadow:0 0 0 1px var(--contorno)}
+.segmentos button{min-height:36px;min-width:44px;padding:0 14px;border:0;border-radius:999px;background:transparent;color:var(--suave);
+  font-weight:var(--peso-medio);cursor:pointer;transition:background-color .15s ease,color .15s ease;touch-action:manipulation}
+.segmentos button[aria-pressed="true"]{background:var(--ciano);color:#06123F}
+@media (hover:hover){.segmentos button:hover:not([aria-pressed="true"]){color:var(--texto)}}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 10px 0 16px;border:0;border-radius:999px;cursor:pointer;
+  background:rgba(60,242,165,.14);color:var(--verde);font-weight:var(--peso-medio);box-shadow:0 0 0 1px rgba(60,242,165,.35)}
+.chip svg{width:14px;height:14px}
+.chip[hidden]{display:none}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* ---------- grade ---------- */
+.grade{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.painel{grid-column:span 12;min-width:0;border-radius:var(--raio-g);padding:24px;background:var(--vidro);
+  box-shadow:0 0 0 1px var(--contorno),0 24px 60px -30px rgba(2,6,40,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.painel h2{font-size:17px;font-weight:var(--peso-forte);letter-spacing:-.01em}
+.painel .nota{margin:4px 0 0;font-size:14px;color:var(--mudo)}
+.p-anel{grid-column:span 5;background:linear-gradient(160deg,rgba(32,58,190,.62),rgba(13,24,92,.66));box-shadow:0 0 0 1px var(--contorno-forte),0 0 60px -20px rgba(51,225,237,.45),0 24px 60px -30px rgba(2,6,40,.9)}
+.p-meses{grid-column:span 7}
+.p-quarter,.p-faixas{grid-column:span 6}
+
+/* ---------- anel (assinatura do painel) ---------- */
+.anel-area{display:grid;place-items:center;margin:14px 0 6px}
+.anel{position:relative;width:min(260px,70vw);aspect-ratio:1}
+.anel svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.anel .trilho{fill:none;stroke:rgba(255,255,255,.08);stroke-width:14}
+.anel .arco{fill:none;stroke:url(#grad-anel);stroke-width:14;stroke-linecap:round;filter:drop-shadow(0 0 10px rgba(51,225,237,.65))}
+.anel .arco.entra{transition:stroke-dashoffset .9s var(--saida)}
+.anel-centro{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.anel-valor{color:var(--texto);font-size:clamp(34px,6vw,44px);font-weight:var(--peso-titulo);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.anel-legenda{margin-top:8px;font-size:14px;color:var(--suave)}
+.meta{display:flex;justify-content:center;align-items:center;gap:8px;margin:6px 0 18px;font-size:15px;color:var(--texto);font-variant-numeric:tabular-nums}
+.meta i{width:10px;height:10px;border-radius:50%;background:linear-gradient(90deg,var(--azul),var(--verde));box-shadow:0 0 10px rgba(60,242,165,.6)}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border-radius:var(--raio-m);overflow:hidden;background:var(--contorno)}
+.kpi{padding:14px 12px;background:rgba(9,16,66,.78);text-align:center;min-width:0}
+.kpi span{display:block;font-size:13px;color:var(--mudo)}
+.kpi b{display:block;margin-top:4px;color:var(--texto);font-size:20px;font-weight:var(--peso-forte);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi small{display:block;font-size:12.5px;color:var(--mudo);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- barras por mês ---------- */
+.barras{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:8px;align-items:end;height:270px;margin-top:22px}
+.barra{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:8px;height:100%;min-width:0;padding:0;border:0;background:transparent;color:inherit;cursor:pointer;border-radius:var(--raio-p);touch-action:manipulation}
+.barra .v{font-size:12px;color:var(--suave);font-variant-numeric:tabular-nums;white-space:nowrap}
+.barra .col{width:100%;max-width:44px;border-radius:8px 8px 4px 4px;background:linear-gradient(0deg,var(--azul),var(--ciano));
+  box-shadow:0 0 18px -4px rgba(51,225,237,.55);transition:opacity .15s ease}
+.barra .col.vazia{background:rgba(255,255,255,.06);box-shadow:none}
+.barra .m{font-size:13px;color:var(--mudo)}
+.barra[aria-pressed="true"] .col{background:linear-gradient(0deg,#16B97C,var(--verde));box-shadow:0 0 22px -2px rgba(60,242,165,.75)}
+.barra[aria-pressed="true"] .m,.barra[aria-pressed="true"] .v{color:var(--texto)}
+.barra.fora .col{opacity:.28}
+.barra:disabled{cursor:default}
+@media (hover:hover){.barra:not(:disabled):hover .col{opacity:.85}}
+
+/* ---------- linhas com barra horizontal ---------- */
+.linhas{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:14px}
+.linhas li{display:grid;grid-template-columns:minmax(88px,max-content) minmax(0,1fr) auto;align-items:center;gap:14px}
+.linhas .rot{color:var(--texto);font-weight:var(--peso-medio);white-space:nowrap}
+.linhas .rot small{display:block;font-weight:var(--peso-normal);color:var(--mudo);font-size:12.5px}
+.trilha{height:10px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+.trilha i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--azul),var(--ciano))}
+.linhas .num{color:var(--texto);font-variant-numeric:tabular-nums;text-align:right;min-width:72px}
+.linhas .num small{display:block;color:var(--mudo);font-size:12.5px}
+.linhas li.ativo .trilha i{background:linear-gradient(90deg,#16B97C,var(--verde))}
+.linhas li.ativo .rot{color:var(--verde)}
+
+/* ---------- tabela ---------- */
+.tabela-rolagem{margin-top:16px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:left;font-size:13px;font-weight:var(--peso-medio);color:var(--mudo);padding:0 12px 10px}
+td{padding:12px;color:var(--texto);border-top:1px solid rgba(122,160,255,.12)}
+td.t,th.t{text-align:right}
+td.pos{color:var(--mudo);width:48px}
+.tempo-forte{color:var(--ciano);font-weight:var(--peso-forte)}
+
+.vazio{margin:18px 0 4px;padding:28px 20px;border-radius:var(--raio-m);text-align:center;color:var(--suave);background:rgba(255,255,255,.04)}
+.rodape{margin-top:28px;font-size:13px;color:var(--mudo);text-align:center}
+
+@media (max-width:960px){.p-anel,.p-meses,.p-quarter,.p-faixas{grid-column:span 12}}
+@media (max-width:620px){
+  .painel{padding:18px}
+  .barras{gap:4px;height:200px}.barra .v{display:none}.barra .m{font-size:11.5px}
+  .kpi{padding:12px 6px}.kpi b{font-size:16px}.kpi small{font-size:11.5px}
+  .linhas li{grid-template-columns:minmax(70px,max-content) minmax(0,1fr) auto;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+@media print{body{background:#0A1150}body::before{display:none}}
+</style>
+</head>
+<body>
+<div class="pagina">
+  <header class="topo">
+    <div>
+      <span class="marca"><svg viewBox="0 0 24 21" aria-hidden="true"><path d="M12 0 24 21H0z" fill="#EEF3FF"/></svg>Suporte N2</span>
+      <h1>Primeiro contato com chamados</h1>
+      <p class="contexto"><b id="periodo">—</b>. Tempo entre a abertura do chamado e o primeiro retorno ao cliente, <span id="registros">registros válidos: 873</span>.</p>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar período">
+      <label class="campo"><span class="sr">Ano</span>
+        <select id="f-ano" aria-label="Ano"></select>
+      </label>
+      <div class="segmentos" id="f-quarter" role="group" aria-label="Quarter"></div>
+      <button type="button" class="chip" id="f-mes" hidden aria-label="Remover filtro de mês"><span id="f-mes-txt"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+  </header>
+
+  <main class="grade">
+    <section class="painel p-anel" aria-labelledby="t-anel">
+      <h2 id="t-anel">Média do primeiro contato</h2>
+      <p class="nota" id="n-anel"></p>
+      <div id="anel-conteudo"></div>
+    </section>
+
+    <section class="painel p-meses" aria-labelledby="t-meses">
+      <h2 id="t-meses">Média por mês</h2>
+      <p class="nota" id="n-meses">Toque em um mês para ver só os chamados dele.</p>
+      <div class="barras" id="barras"></div>
+    </section>
+
+    <section class="painel p-quarter" aria-labelledby="t-quarter">
+      <h2 id="t-quarter">Média por quarter</h2>
+      <p class="nota" id="n-quarter"></p>
+      <ul class="linhas" id="quarters"></ul>
+    </section>
+
+    <section class="painel p-faixas" aria-labelledby="t-faixas">
+      <h2 id="t-faixas">Quanto tempo o cliente esperou</h2>
+      <p class="nota">Chamados do período por faixa de tempo até o primeiro contato.</p>
+      <div id="faixas"></div>
+    </section>
+
+    <section class="painel" aria-labelledby="t-lentos">
+      <h2 id="t-lentos">Chamados que mais esperaram</h2>
+      <p class="nota">Os dez maiores tempos do período, para olhar caso a caso.</p>
+      <div id="lentos"></div>
+    </section>
+  </main>
+  <p class="rodape">Dados da planilha “Primeiro Contato com Chamados - Médias”.</p>
+</div>
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+<script>
+const raw=(window.__PC__&&window.__PC__.raw)||`Tempo\tChamado\tQuarter\tMes\tAno\n00:00:00	1717782	1	1	2026\n00:00:05	1717784	1	1	2026\n00:00:04	1717786	1	1	2026\n00:00:04	1717787	1	1	2026\n05:09:54	1717974	1	1	2026\n00:00:01	1717983	1	1	2026\n00:00:00	1718028	1	1	2026\n00:22:54	1718041	1	1	2026\n00:00:01	1718052	1	1	2026\n08:53:51	1718236	1	1	2026\n07:35:40	1718989	1	1	2026\n03:30:00	1719155	1	1	2026\n00:07:43	1719395	1	1	2026\n00:00:00	1719462	1	1	2026\n00:00:04	1719565	1	1	2026\n00:35:01	1719597	1	1	2026\n00:00:00	1720105	1	1	2026\n00:00:01	1720606	1	1	2026\n00:42:30	1720888	1	1	2026\n00:58:14	1721102	1	1	2026\n01:12:17	1721171	1	1	2026\n00:00:04	1721545	1	1	2026\n00:00:00	1722408	1	1	2026\n00:00:00	1724088	1	1	2026\n00:00:04	1724126	1	1	2026\n00:00:04	1724276	1	1	2026\n00:52:17	1724401	1	1	2026\n00:00:04	1725824	1	1	2026\n05:54:51	1727068	1	1	2026\n00:00:05	1727069	1	1	2026\n04:00:22	1727281	1	1	2026\n00:00:01	1727471	1	1	2026\n00:00:04	1727581	1	1	2026\n00:00:01	1727782	1	1	2026\n01:56:19	1728788	1	1	2026\n01:22:34	1729652	1	1	2026\n00:00:00	1730085	1	1	2026\n00:00:00	1730266	1	1	2026\n00:30:00	1730312	1	1	2026\n00:00:00	1730505	1	1	2026\n00:40:00	1730660	1	1	2026\n02:00:00	1730716	1	1	2026\n00:00:00	1730734	1	1	2026\n00:35:00	1730754	1	1	2026\n00:00:18	1731708	1	1	2026\n02:42:40	1731892	1	1	2026\n06:47:12	1732926	1	1	2026\n00:00:00	1733154	1	1	2026\n00:00:00	1733155	1	1	2026\n01:44:06	1733861	1	1	2026\n00:00:00	1734312	1	1	2026\n00:00:00	1734347	1	1	2026\n00:00:00	1734467	1	1	2026\n00:30:00	1734609	1	1	2026\n00:03:00	1746526	1	1	2026\n00:00:00	1746622	1	1	2026\n00:20:00	1746810	1	1	2026\n00:00:00	1746829	1	1	2026\n00:05:00	1747476	1	1	2026\n00:00:00	1747562	1	1	2026\n00:00:00	1747684	1	1	2026\n00:01:55	1747752	1	1	2026\n00:04:12	1747915	1	1	2026\n00:00:04	1748190	1	1	2026\n00:05:00	1718090	1	1	2026\n00:00:00	1750685	1	1	2026\n00:03:58	1750701	1	1	2026\n00:09:47	1750785	1	1	2026\n00:07:04	1750788	1	1	2026\n01:00:18	1751097	1	1	2026\n00:13:02	1751218	1	1	2026\n10:21:33	1751247	1	1	2026\n01:01:57	1751334	1	1	2026\n01:23:55	1751433	1	1	2026\n06:29:39	1752167	1	1	2026\n01:10:24	1752206	1	1	2026\n01:30:56	1752465	1	1	2026\n05:41:00	1752504	1	1	2026\n04:12:28	1752577	1	1	2026\n00:00:05	1752810	1	1	2026\n00:00:05	1753065	1	1	2026\n00:41:37	1753068	1	1	2026\n03:33:14	1753149	1	1	2026\n00:00:04	1753191	1	1	2026\n00:00:06	1753196	1	1	2026\n11:25:43	1753249	1	1	2026\n00:00:04	1753364	1	1	2026\n00:00:04	1753370	1	1	2026\n02:36:35	1753658	1	1	2026\n00:00:04	1753659	1	1	2026\n01:50:41	1753696	1	1	2026\n00:00:04	1753701	1	1	2026\n00:51:42	1753941	1	1	2026\n00:48:49	1753963	1	1	2026\n00:00:04	1754719	1	1	2026\n05:26:59	1754939	1	1	2026\n00:00:01	1754988	1	1	2026\n00:59:42	1755082	1	1	2026\n00:00:04	1755158	1	1	2026\n07:10:44	1755315	1	1	2026\n00:00:01	1755301	1	1	2026\n00:00:24	1755343	1	1	2026\n00:00:10	1755819	1	1	2026\n03:20:07	1756761	1	1	2026\n00:00:00	1757176	1	1	2026\n00:37:06	1757492	1	1	2026\n06:32:12	1757889	1	1	2026\n00:00:00	1758393	1	1	2026\n00:12:41	1758471	1	1	2026\n00:00:00	1758768	1	1	2026\n06:55:54	1759334	1	1	2026\n01:50:14	1759940	1	1	2026\n01:49:17	1760651	1	1	2026\n05:15:13	1761135	1	1	2026\n06:04:39	1761796	1	1	2026\n00:00:00	1761814	1	1	2026\n00:17:25	1762024	1	1	2026\n01:26:26	1762083	1	1	2026\n00:00:00	1762237	1	1	2026\n00:25:30	1763230	1	1	2026\n00:00:00	1764346	1	1	2026\n00:00:01	1764901	1	1	2026\n00:08:59	1765818	1	1	2026\n00:08:59	1765818	1	1	2026\n00:29:04	1766255	1	1	2026\n00:42:53	1766668	1	1	2026\n00:37:12	1766682	1	1	2026\n00:04:21	1766939	1	1	2026\n00:12:37	1767484	1	1	2026\n01:00:13	1767582	1	1	2026\n00:16:30	1767665	1	1	2026\n00:08:00	1768098	1	1	2026\n02:06:57	1757563	2	4	2026\n13:51:24	1766211	2	4	2026\n04:45:57	1766661	2	4	2026\n00:00:00	1767176	2	4	2026\n11:26:15	1767767	2	4	2026\n00:34:50	1768034	2	4	2026\n00:00:01	1768062	2	4	2026\n00:00:00	1768508	2	4	2026\n01:23:09	1769051	2	4	2026\n00:00:00	1769136	2	4	2026\n01:52:18	1769248	2	4	2026\n00:00:05	1769254	2	4	2026\n00:00:00	1769386	2	4	2026\n00:00:00	1769388	2	4	2026\n00:00:00	1769400	2	4	2026\n00:00:00	1769449	2	4	2026\n05:34:12	1769695	2	4	2026\n00:00:04	1771479	2	4	2026\n23:34:57	1771501	2	4	2026\n10:20:01	1771662	2	4	2026\n00:26:03	1771785	2	4	2026\n00:00:01	1771837	2	4	2026\n02:21:44	1771929	2	4	2026\n01:49:38	1772143	2	4	2026\n01:31:07	1772312	2	4	2026\n02:59:30	1772428	2	4	2026\n00:00:00	1772500	2	4	2026\n00:00:00	1772654	2	4	2026\n00:00:00	1772711	2	4	2026\n00:00:04	1772740	2	4	2026\n01:24:27	1772842	2	4	2026\n01:25:20	1772847	2	4	2026\n01:15:41	1773015	2	4	2026\n00:00:17	1773038	2	4	2026\n00:00:01	1773372	2	4	2026\n00:00:05	1773590	2	4	2026\n00:00:00	1773740	2	4	2026\n00:00:00	1774072	2	4	2026\n00:00:00	1774146	2	4	2026\n04:57:41	1774255	2	4	2026\n00:49:15	1774325	2	4	2026\n05:05:44	1774347	2	4	2026\n00:00:01	1774379	2	4	2026\n00:00:00	1774707	2	4	2026\n06:40:59	1774959	2	4	2026\n09:28:38	1775636	2	4	2026\n00:07:32	1775766	2	4	2026\n00:00:01	1775821	2	4	2026\n00:00:04	1776080	2	4	2026\n00:00:01	1776106	2	4	2026\n00:34:00	1776252	2	4	2026\n00:00:04	1776423	2	4	2026\n00:00:01	1776464	2	4	2026\n09:40:31	1776503	2	4	2026\n00:41:10	1776514	2	4	2026\n00:31:54	1776703	2	4	2026\n00:19:14	1776754	2	4	2026\n00:00:00	1776807	2	4	2026\n01:48:12	1776868	2	4	2026\n00:00:01	1776885	2	4	2026\n00:00:00	1777041	2	4	2026\n00:12:24	1777073	2	4	2026\n00:00:02	1777244	2	4	2026\n00:00:04	1777409	2	4	2026\n10:31:27	1777413	2	4	2026\n00:00:01	1777452	2	4	2026\n00:00:00	1777513	2	4	2026\n00:49:23	1777538	2	4	2026\n00:00:04	1777555	2	4	2026\n00:00:04	1777665	2	4	2026\n05:26:57	1777672	2	4	2026\n00:00:04	1777742	2	4	2026\n00:00:04	1777942	2	4	2026\n00:00:10	1778051	2	4	2026\n00:27:29	1778158	2	4	2026\n00:34:10	1778166	2	4	2026\n00:00:00	1778239	2	4	2026\n00:00:00	1778276	2	4	2026\n08:17:03	1778397	2	4	2026\n00:26:15	1778430	2	4	2026\n00:00:04	1778443	2	4	2026\n00:00:04	1778450	2	4	2026\n01:48:04	1778682	2	4	2026\n00:53:27	1778736	2	4	2026\n00:00:00	1778880	2	4	2026\n00:21:47	1778906	2	4	2026\n00:00:00	1779299	2	4	2026\n01:34:09	1779597	2	4	2026\n00:10:05	1779696	2	4	2026\n00:00:05	1779738	2	4	2026\n00:00:05	1779746	2	4	2026\n00:27:52	1779954	2	4	2026\n00:00:00	1779955	2	4	2026\n00:22:52	1780098	2	4	2026\n00:00:01	1780261	2	4	2026\n00:00:00	1780314	2	4	2026\n00:00:04	1780418	2	4	2026\n01:06:05	1780479	2	4	2026\n14:42:52	1780507	2	4	2026\n00:00:01	1780549	2	4	2026\n01:56:31	1780566	2	4	2026\n00:00:16	1780603	2	4	2026\n01:35:59	1780864	2	4	2026\n00:00:16	1781250	2	4	2026\n02:00:48	1781303	2	4	2026\n00:51:40	1781463	2	4	2026\n01:26:59	1781692	2	4	2026\n02:38:48	1781704	2	4	2026\n00:00:16	1781721	2	4	2026\n00:03:14	1781783	2	4	2026\n00:15:28	1781889	2	4	2026\n00:12:46	1781955	2	4	2026\n13:40:42	1782011	2	4	2026\n00:00:04	1782063	2	4	2026\n00:00:05	1782169	2	4	2026\n15:35:31	1782174	2	4	2026\n00:00:04	1782175	2	4	2026\n00:00:01	1782307	2	4	2026\n00:00:01	1782312	2	4	2026\n00:00:00	1782352	2	4	2026\n00:14:43	1782397	2	4	2026\n00:00:00	1782440	2	4	2026\n00:00:04	1782525	2	4	2026\n00:00:00	1782532	2	4	2026\n00:00:00	1782537	2	4	2026\n00:00:00	1782630	2	4	2026\n00:00:00	1782631	2	4	2026\n00:00:04	1782766	2	4	2026\n00:12:05	1782779	2	4	2026\n00:13:07	1782790	2	4	2026\n00:46:21	1782803	2	4	2026\n01:24:34	1782917	2	4	2026\n01:19:48	1782947	2	4	2026\n06:08:28	1783162	2	4	2026\n00:00:00	1783173	2	4	2026\n02:36:11	1783377	2	4	2026\n21:26:40	1783397	2	4	2026\n00:00:00	1783537	2	4	2026\n00:03:41	1769520	2	5	2026\n00:12:26	1782432	2	5	2026\n08:21:56	1783314	2	5	2026\n09:13:59	1783628	2	5	2026\n00:00:00	1783814	2	5	2026\n17:23:32	1784106	2	5	2026\n00:00:14	1784460	2	5	2026\n00:00:00	1784485	2	5	2026\n00:00:05	1784515	2	5	2026\n00:00:01	1784516	2	5	2026\n00:00:04	1784517	2	5	2026\n02:24:55	1784519	2	5	2026\n00:00:05	1784521	2	5	2026\n06:23:06	1784571	2	5	2026\n00:00:16	1784584	2	5	2026\n00:00:00	1784630	2	5	2026\n00:17:18	1784684	2	5	2026\n00:00:00	1784739	2	5	2026\n08:38:22	1784743	2	5	2026\n00:00:04	1784816	2	5	2026\n00:00:04	1784820	2	5	2026\n00:00:04	1784930	2	5	2026\n00:52:14	1785039	2	5	2026\n00:00:00	1785162	2	5	2026\n03:41:19	1785361	2	5	2026\n00:00:00	1785376	2	5	2026\n00:00:00	1785448	2	5	2026\n00:00:08	1785811	2	5	2026\n00:50:05	1785846	2	5	2026\n00:00:00	1786034	2	5	2026\n00:00:00	1786055	2	5	2026\n00:00:00	1786100	2	5	2026\n00:00:47	1786301	2	5	2026\n03:29:32	1786352	2	5	2026\n01:28:37	1786878	2	5	2026\n00:00:04	1787019	2	5	2026\n00:00:04	1787026	2	5	2026\n00:53:12	1787080	2	5	2026\n00:53:12	1787110	2	5	2026\n00:02:04	1787127	2	5	2026\n00:00:04	1787258	2	5	2026\n05:30:43	1787267	2	5	2026\n02:30:51	1787289	2	5	2026\n00:00:04	1787345	2	5	2026\n00:00:19	1787380	2	5	2026\n00:00:19	1787380	2	5	2026\n00:00:04	1787433	2	5	2026\n00:00:00	1787439	2	5	2026\n14:51:07	1787588	2	5	2026\n00:00:47	1787594	2	5	2026\n00:00:00	1787794	2	5	2026\n00:00:00	1787814	2	5	2026\n00:00:04	1787819	2	5	2026\n00:00:30	1787996	2	5	2026\n00:00:00	1788316	2	5	2026\n23:53:13	1788650	2	5	2026\n00:00:00	1788752	2	5	2026\n00:47:46	1788756	2	5	2026\n00:00:00	1788918	2	5	2026\n15:40:29	1788922	2	5	2026\n00:00:01	1789049	2	5	2026\n00:57:49	1789059	2	5	2026\n00:00:01	1789211	2	5	2026\n00:36:40	1789284	2	5	2026\n00:00:00	1789303	2	5	2026\n10:20:11	1789420	2	5	2026\n00:00:00	1789561	2	5	2026\n00:00:04	1789689	2	5	2026\n00:00:04	1789737	2	5	2026\n00:00:01	1789851	2	5	2026\n01:04:26	1789877	2	5	2026\n07:17:09	1789882	2	5	2026\n03:01:11	1789901	2	5	2026\n01:33:50	1790084	2	5	2026\n00:00:04	1790107	2	5	2026\n09:29:31	1790190	2	5	2026\n00:00:01	1790217	2	5	2026\n00:00:01	1790217	2	5	2026\n00:00:06	1790250	2	5	2026\n00:00:04	1790358	2	5	2026\n00:00:04	1790367	2	5	2026\n00:00:01	1790471	2	5	2026\n00:00:00	1790558	2	5	2026\n00:00:00	1790560	2	5	2026\n02:54:04	1790569	2	5	2026\n00:00:04	1790573	2	5	2026\n01:00:51	1791196	2	5	2026\n00:00:00	1791331	2	5	2026\n00:00:05	1791354	2	5	2026\n00:00:04	1791730	2	5	2026\n00:39:47	1791969	2	5	2026\n02:41:34	1792084	2	5	2026\n07:34:45	1792430	2	5	2026\n06:54:26	1792435	2	5	2026\n00:00:04	1792440	2	5	2026\n04:42:04	1792455	2	5	2026\n00:00:09	1792776	2	5	2026\n00:00:00	1792815	2	5	2026\n10:53:21	1793193	2	5	2026\n00:00:05	1793197	2	5	2026\n00:00:04	1793249	2	5	2026\n00:00:04	1793278	2	5	2026\n02:37:23	1793333	2	5	2026\n00:00:05	1793462	2	5	2026\n00:00:00	1793747	2	5	2026\n00:00:00	1793759	2	5	2026\n00:00:05	1793793	2	5	2026\n09:04:47	1793876	2	5	2026\n00:00:00	1793877	2	5	2026\n00:00:04	1794008	2	5	2026\n02:14:10	1794202	2	5	2026\n00:00:04	1794261	2	5	2026\n00:00:00	1794324	2	5	2026\n00:00:05	1794681	2	5	2026\n00:00:05	1794941	2	5	2026\n00:00:00	1794975	2	5	2026\n00:00:00	1795046	2	5	2026\n00:00:00	1795189	2	5	2026\n00:21:10	1795198	2	5	2026\n00:00:04	1795259	2	5	2026\n00:50:41	1795261	2	5	2026\n00:01:05	1795289	2	5	2026\n07:01:14	1795356	2	5	2026\n05:37:16	1795384	2	5	2026\n00:00:01	1795510	2	5	2026\n00:00:04	1795562	2	5	2026\n00:00:15	1795571	2	5	2026\n00:00:04	1795627	2	5	2026\n00:00:04	1795645	2	5	2026\n00:00:00	1795654	2	5	2026\n00:50:50	1796193	2	5	2026\n00:00:05	1796291	2	5	2026\n00:00:00	1796341	2	5	2026\n00:00:16	1796404	2	5	2026\n00:00:04	1796530	2	5	2026\n00:00:05	1796539	2	5	2026\n01:01:23	1796710	2	5	2026\n00:00:01	1796817	2	5	2026\n00:00:00	1797017	2	5	2026\n00:00:01	1797022	2	5	2026\n00:00:03	1797028	2	5	2026\n00:03:46	1797029	2	5	2026\n00:00:01	1797320	2	5	2026\n02:15:37	1797473	2	5	2026\n00:24:48	1797489	2	5	2026\n01:42:56	1797760	2	5	2026\n00:11:21	1797804	2	5	2026\n00:10:24	1797839	2	5	2026\n00:00:00	1797925	2	5	2026\n00:00:01	1797947	2	5	2026\n00:00:01	1797953	2	5	2026\n00:00:01	1798012	2	5	2026\n00:00:32	1798039	2	5	2026\n00:00:01	1798158	2	5	2026\n00:17:26	1798187	2	5	2026\n03:48:44	1798221	2	5	2026\n00:00:00	1798520	2	5	2026\n00:38:56	1798793	2	5	2026\n03:33:06	1798927	2	5	2026\n00:00:40	1799018	2	5	2026\n00:00:00	1799076	2	5	2026\n00:00:04	1799083	2	5	2026\n09:26:09	1799107	2	5	2026\n00:00:09	1799173	2	5	2026\n00:00:00	1799247	2	5	2026\n00:00:00	1799613	2	5	2026\n00:00:00	1741595	3	7	2026\n00:00:00	1761304	3	7	2026\n00:00:00	1802153	3	7	2026\n00:00:00	1810503	3	7	2026\n00:00:05	1814428	3	7	2026\n00:46:24	1814527	3	7	2026\n00:00:04	1814821	3	7	2026\n00:00:04	1814822	3	7	2026\n00:00:04	1814823	3	7	2026\n00:00:05	1814826	3	7	2026\n02:17:35	1814901	3	7	2026\n02:26:45	1814933	3	7	2026\n01:46:19	1815030	3	7	2026\n01:45:41	1815036	3	7	2026\n01:45:30	1815040	3	7	2026\n01:45:18	1815121	3	7	2026\n01:45:07	1815124	3	7	2026\n05:54:54	1815223	3	7	2026\n01:00:49	1815474	3	7	2026\n04:31:15	1815545	3	7	2026\n00:00:00	1815589	3	7	2026\n00:00:04	1815638	3	7	2026\n00:00:00	1815740	3	7	2026\n00:00:04	1815756	3	7	2026\n00:00:04	1815772	3	7	2026\n00:00:04	1815825	3	7	2026\n00:00:00	1816029	3	7	2026\n00:00:02	1816105	3	7	2026\n00:00:00	1816225	3	7	2026\n14:49:19	1816246	3	7	2026\n00:00:00	1816323	3	7	2026\n00:00:00	1816366	3	7	2026\n00:00:00	1816459	3	7	2026\n00:00:00	1816532	3	7	2026\n00:00:00	1816575	3	7	2026\n05:37:53	1816631	3	7	2026\n00:00:04	1816636	3	7	2026\n00:00:00	1816658	3	7	2026\n12:03:16	1816851	3	7	2026\n00:00:00	1816945	3	7	2026\n00:00:00	1816954	3	7	2026\n00:00:00	1817131	3	7	2026\n00:00:00	1817224	3	7	2026\n00:00:00	1817245	3	7	2026\n00:00:00	1817279	3	7	2026\n00:00:04	1817282	3	7	2026\n00:00:00	1817286	3	7	2026\n00:00:00	1817334	3	7	2026\n00:00:00	1817458	3	7	2026\n00:00:00	1817471	3	7	2026\n01:45:55	1817680	3	7	2026\n00:00:00	1818248	3	7	2026\n00:00:00	1818454	3	7	2026\n00:00:00	1818568	3	7	2026\n00:07:47	1818592	3	7	2026\n00:00:01	1818689	3	7	2026\n00:00:04	1818731	3	7	2026\n00:00:00	1818872	3	7	2026\n00:00:04	1819041	3	7	2026\n00:00:00	1819073	3	7	2026\n00:00:04	1819084	3	7	2026\n00:00:04	1819086	3	7	2026\n00:00:00	1819125	3	7	2026\n00:00:00	1819326	3	7	2026\n00:00:04	1819333	3	7	2026\n00:00:00	1819369	3	7	2026\n00:00:00	1819370	3	7	2026\n00:00:01	1819445	3	7	2026\n00:00:00	1819448	3	7	2026\n00:00:00	1819882	3	7	2026\n00:00:03	1819923	3	7	2026\n15:46:39	1820023	3	7	2026\n00:00:00	1820085	3	7	2026\n00:00:05	1820211	3	7	2026\n00:00:00	1820372	3	7	2026\n00:00:01	1820376	3	7	2026\n00:00:00	1820528	3	7	2026\n17:38:49	1820611	3	7	2026\n00:00:00	1820876	3	7	2026\n00:00:00	1820950	3	7	2026\n00:00:04	1820979	3	7	2026\n00:00:00	1821076	3	7	2026\n00:00:00	1821564	3	7	2026\n00:00:00	1821636	3	7	2026\n00:00:00	1821647	3	7	2026\n00:00:00	1821855	3	7	2026\n03:04:36	1821987	3	7	2026\n08:41:59	1822338	3	7	2026\n06:19:27	1822358	3	7	2026\n00:17:21	1822393	3	7	2026\n01:53:31	1822479	3	7	2026\n06:04:12	1822608	3	7	2026\n00:00:02	1822630	3	7	2026\n02:23:42	1822781	3	7	2026\n00:40:22	1822876	3	7	2026\n00:00:06	1822910	3	7	2026\n00:00:00	1822975	3	7	2026\n09:34:40	1822979	3	7	2026\n00:00:04	1823020	3	7	2026\n00:00:04	1823096	3	7	2026\n00:00:00	1823104	3	7	2026\n00:00:01	1823373	3	7	2026\n00:00:00	1823397	3	7	2026\n00:00:05	1823503	3	7	2026\n02:22:45	1823526	3	7	2026\n00:01:29	1823605	3	7	2026\n00:00:08	1823693	3	7	2026\n00:04:11	1823706	3	7	2026\n00:00:01	1823736	3	7	2026\n00:00:00	1823794	3	7	2026\n00:41:34	1823958	3	7	2026\n00:00:04	1824409	3	7	2026\n00:00:00	1824411	3	7	2026\n07:18:51	1824472	3	7	2026\n00:00:01	1824512	3	7	2026\n06:27:08	1824751	3	7	2026\n00:00:00	1824780	3	7	2026\n00:00:00	1824946	3	7	2026\n00:00:04	1825145	3	7	2026\n03:49:45	1825197	3	7	2026\n00:52:45	1825210	3	7	2026\n22:53:52	1825262	3	7	2026\n10:50:33	1825464	3	7	2026\n10:50:33	1825600	3	7	2026\n00:00:04	1825696	3	7	2026\n14:40:46	1825700	3	7	2026\n01:26:00	1825744	3	7	2026\n00:00:00	1825852	3	7	2026\n01:55:33	1826153	3	7	2026\n00:48:19	1826632	3	7	2026\n00:00:00	1826720	3	7	2026\n00:04:31	1827059	3	7	2026\n00:22:34	1827248	3	7	2026\n00:07:19	1827408	3	7	2026\n04:06:19	1827409	3	7	2026\n00:29:08	1827479	3	7	2026\n00:06:13	1827617	3	7	2026\n00:26:44	1827770	3	7	2026\n00:10:07	1827999	3	7	2026\n00:01:38	1828159	3	7	2026\n00:58:36	1828194	3	7	2026\n00:19:03	1828333	3	7	2026\n00:03:54	1828588	3	7	2026\n00:05:52	1828663	3	7	2026\n00:04:10	1828757	3	7	2026\n12:37:54	1828779	3	7	2026\n00:00:04	1828844	3	7	2026\n00:31:29	1828910	3	7	2026\n00:10:10	1828943	3	7	2026\n13:19:11	1829361	3	7	2026\n00:20:10	1829397	3	7	2026\n00:00:04	1829454	3	7	2026\n00:00:04	1829638	3	7	2026\n00:04:33	1829643	3	7	2026\n00:00:04	1829681	3	7	2026\n00:07:48	1829760	3	7	2026\n00:48:11	1829983	3	7	2026\n00:00:00	1830083	3	7	2026\n00:01:03	1830097	3	7	2026\n13:29:53	1830200	3	7	2026\n00:00:00	1782194	3	8	2026\n00:00:12	1795317	3	8	2026\n00:00:00	1808314	3	8	2026\n00:00:01	1821689	3	8	2026\n00:01:20	1822052	3	8	2026\n00:00:12	1824437	3	8	2026\n00:00:00	1824852	3	8	2026\n00:27:37	1827783	3	8	2026\n00:00:00	1828154	3	8	2026\n00:00:50	1828849	3	8	2026\n00:00:50	1829364	3	8	2026\n00:00:00	1829493	3	8	2026\n18:55:57	1829627	3	8	2026\n16:50:26	1829839	3	8	2026\n15:34:44	1830588	3	8	2026\n00:00:00	1830614	3	8	2026\n00:00:00	1830634	3	8	2026\n02:55:41	1830873	3	8	2026\n00:00:01	1830890	3	8	2026\n12:47:44	1830904	3	8	2026\n00:00:00	1831049	3	8	2026\n00:00:04	1831070	3	8	2026\n00:00:04	1831098	3	8	2026\n00:00:15	1831131	3	8	2026\n00:00:04	1831208	3	8	2026\n00:00:05	1831213	3	8	2026\n00:00:00	1831251	3	8	2026\n02:35:26	1831298	3	8	2026\n06:39:40	1831492	3	8	2026\n00:00:04	1831513	3	8	2026\n00:00:08	1831768	3	8	2026\n00:00:01	1831910	3	8	2026\n00:00:01	1832003	3	8	2026\n00:00:00	1832004	3	8	2026\n04:07:31	1832097	3	8	2026\n15:31:46	1832238	3	8	2026\n16:33:05	1832725	3	8	2026\n00:00:00	1832980	3	8	2026\n00:00:13	1833214	3	8	2026\n00:00:01	1833414	3	8	2026\n00:04:50	1833595	3	8	2026\n00:00:04	1833646	3	8	2026\n00:00:05	1833652	3	8	2026\n00:00:08	1833683	3	8	2026\n00:00:05	1833705	3	8	2026\n00:00:05	1833740	3	8	2026\n00:00:20	1833766	3	8	2026\n00:00:00	1833930	3	8	2026\n00:00:00	1833985	3	8	2026\n00:00:00	1834197	3	8	2026\n00:00:13	1834244	3	8	2026\n02:30:13	1834263	3	8	2026\n00:00:05	1834441	3	8	2026\n00:00:13	1834459	3	8	2026\n00:00:08	1834503	3	8	2026\n08:54:04	1834533	3	8	2026\n00:00:12	1834595	3	8	2026\n01:06:22	1834599	3	8	2026\n00:00:00	1834723	3	8	2026\n00:24:06	1834862	3	8	2026\n00:00:00	1835000	3	8	2026\n00:00:01	1835025	3	8	2026\n00:00:00	1835143	3	8	2026\n00:00:04	1835182	3	8	2026\n00:00:00	1835254	3	8	2026\n00:00:01	1835592	3	8	2026\n00:00:00	1835704	3	8	2026\n00:02:01	1835710	3	8	2026\n00:00:00	1835792	3	8	2026\n10:49:40	1835954	3	8	2026\n00:00:00	1835988	3	8	2026\n01:20:23	1836605	3	8	2026\n00:00:04	1836629	3	8	2026\n00:01:52	1836638	3	8	2026\n00:14:22	1836764	3	8	2026\n00:00:01	1836869	3	8	2026\n00:00:00	1837139	3	8	2026\n00:00:00	1837335	3	8	2026\n00:00:04	1837462	3	8	2026\n00:00:01	1837486	3	8	2026\n00:00:00	1837562	3	8	2026\n00:00:00	1837697	3	8	2026\n04:16:11	1837937	3	8	2026\n00:00:55	1838096	3	8	2026\n00:12:32	1838244	3	8	2026\n00:32:57	1838305	3	8	2026\n01:37:54	1838340	3	8	2026\n01:23:48	1838744	3	8	2026\n00:36:52	1838805	3	8	2026\n05:20:51	1838900	3	8	2026\n00:03:43	1838914	3	8	2026\n00:00:04	1838976	3	8	2026\n00:00:21	1839126	3	8	2026\n00:00:04	1839195	3	8	2026\n00:00:00	1839376	3	8	2026\n00:00:01	1839385	3	8	2026\n00:00:07	1839412	3	8	2026\n00:34:09	1839463	3	8	2026\n00:01:40	1839479	3	8	2026\n00:00:00	1839798	3	8	2026\n00:01:06	1839818	3	8	2026\n00:00:25	1839857	3	8	2026\n00:00:01	1839867	3	8	2026\n00:37:02	1839874	3	8	2026\n16:04:24	1839911	3	8	2026\n00:31:31	1840391	3	8	2026\n17:53:56	1840458	3	8	2026\n01:56:33	1840631	3	8	2026\n00:00:00	1840636	3	8	2026\n00:00:00	1841025	3	8	2026\n00:00:00	1841056	3	8	2026\n00:00:00	1841068	3	8	2026\n00:00:13	1841211	3	8	2026\n00:00:13	1841211	3	8	2026\n21:28:55	1841261	3	8	2026\n00:01:49	1841447	3	8	2026\n00:00:00	1841649	3	8	2026\n00:00:04	1841729	3	8	2026\n00:09:27	1841735	3	8	2026\n00:00:00	1841889	3	8	2026\n00:00:56	1841905	3	8	2026\n00:00:07	1841940	3	8	2026\n00:00:00	1841964	3	8	2026\n01:32:08	1842081	3	8	2026\n00:00:00	1842099	3	8	2026\n00:00:01	1842226	3	8	2026\n00:00:00	1842248	3	8	2026\n00:00:00	1842340	3	8	2026\n00:37:04	1842341	3	8	2026\n00:00:00	1842575	3	8	2026\n00:00:00	1842633	3	8	2026\n09:42:18	1842649	3	8	2026\n03:30:26	1842859	3	8	2026\n00:00:04	1842939	3	8	2026\n01:24:24	1843141	3	8	2026\n00:00:00	1843256	3	8	2026\n00:00:00	1843358	3	8	2026\n00:00:08	1843365	3	8	2026\n00:00:00	1843467	3	8	2026\n00:00:00	1843615	3	8	2026\n00:00:00	1843624	3	8	2026\n16:43:58	1843716	3	8	2026\n00:00:04	1843721	3	8	2026\n00:08:36	1843804	3	8	2026\n00:00:04	1843860	3	8	2026\n00:00:04	1843881	3	8	2026\n00:00:03	1843899	3	8	2026\n00:47:48	1844142	3	8	2026\n00:14:26	1844174	3	8	2026\n00:00:00	1844452	3	8	2026\n02:53:56	1844468	3	8	2026\n00:00:01	1844479	3	8	2026\n00:00:00	1845854	3	8	2026\n00:24:07	1845959	3	8	2026\n00:00:00	1846073	3	8	2026\n00:00:00	1846169	3	8	2026\n02:44:43	1846225	3	8	2026\n00:00:05	1846285	3	8	2026\n03:52:54	1846556	3	8	2026\n00:00:00	1870593	4	10	2026\n07:10:27	1869961	4	10	2026\n00:11:57	1870302	4	10	2026\n00:00:09	1870230	4	10	2026\n00:00:00	1870044	4	10	2026\n00:02:54	1870043	4	10	2026\n00:00:12	1868859	4	10	2026\n00:00:01	1869876	4	10	2026\n00:00:04	1869858	4	10	2026\n00:00:00	1869710	4	10	2026\n17:44:55	1869614	4	10	2026\n00:00:00	1869656	4	10	2026\n00:00:00	1869433	4	10	2026\n00:00:00	1869162	4	10	2026\n01:07:23	1868765	4	10	2026\n00:00:52	1868720	4	10	2026\n00:00:04	1868715	4	10	2026\n00:00:00	1868685	4	10	2026\n00:01:20	1857551	4	10	2026\n00:00:01	1867990	4	10	2026\n08:58:33	1868304	4	10	2026\n00:15:19	1868164	4	10	2026\n00:03:04	1866820	4	10	2026\n00:03:08	1867928	4	10	2026\n00:04:58	1867922	4	10	2026\n19:40:49	1866551	4	10	2026\n13:54:50	1863781	4	10	2026\n09:51:46	1867633	4	10	2026\n00:00:21	1867386	4	10	2026\n16:24:22	1867180	4	10	2026\n02:04:39	1866793	4	10	2026\n00:11:49	1866828	4	10	2026\n00:52:47	1866652	4	10	2026\n00:04:46	1866598	4	10	2026\n00:07:39	1866316	4	10	2026\n00:48:32	1866258	4	10	2026\n00:00:00	1865656	4	10	2026\n00:00:00	1865410	4	10	2026\n01:25:54	1865178	4	10	2026\n03:32:03	1865244	4	10	2026\n00:00:00	1865578	4	10	2026\n00:00:03	1864428	4	10	2026\n03:28:02	1863058	4	10	2026\n00:00:00	1864637	4	10	2026\n00:00:00	1865027	4	10	2026\n00:00:00	1864574	4	10	2026\n00:07:09	1864741	4	10	2026\n11:14:31	1862419	4	10	2026\n00:00:00	1864553	4	10	2026\n00:00:00	1863943	4	10	2026\n00:11:02	1864285	4	10	2026\n00:00:00	1864076	4	10	2026\n00:24:13	1864078	4	10	2026\n00:00:00	1862701	4	10	2026\n04:11:12	1855364	4	10	2026\n00:00:00	1863174	4	10	2026\n00:00:04	1862821	4	10	2026\n00:00:04	1862815	4	10	2026\n00:00:04	1862823	4	10	2026\n08:12:12	1860960	4	10	2026\n00:00:04	1862072	4	10	2026\n00:16:22	1870592	4	10	2026\n00:09:12	1870727	4	10	2026\n02:11:59	1870738	4	10	2026\n00:11:10	1870732	4	10	2026\n00:02:40	1870811	4	10	2026\n17:54:51	1870844	4	10	2026\n02:27:12	1871178	4	10	2026\n14:47:38	1871125	4	10	2026\n02:43:30	1871309	4	10	2026\n00:31:15	1871323	4	10	2026\n00:21:51	1871164	4	10	2026\n02:38:19	1871280	4	10	2026\n00:06:09	1871263	4	10	2026\n00:03:47	1871770	4	10	2026\n00:41:40	1871484	4	10	2026\n00:00:13	1877055	4	11	2026\n00:00:00	1877430	4	11	2026\n00:21:02	1877821	4	11	2026\n00:44:19	1877748	4	11	2026\n00:51:45	1877913	4	11	2026\n00:08:02	1876623	4	11	2026\n00:20:31	1877633	4	11	2026\n00:21:23	1877635	4	11	2026\n00:22:10	1877636	4	11	2026\n00:22:10	1878104	4	11	2026\n00:03:07	1878348	4	11	2026\n00:18:25	1878419	4	11	2026\n00:12:57	1878459	4	11	2026\n00:03:56	1878555	4	11	2026\n00:22:26	1878821	4	11	2026\n01:16:55	1878723	4	11	2026\n13:07:04	1879467	4	11	2026\n00:07:27	1879491	4	11	2026\n00:28:07	1878755	4	11	2026\n01:03:47	1874575	4	11	2026\n00:07:33	1878785	4	11	2026\n00:19:07	1879866	4	11	2026\n00:02:06	1879973	4	11	2026\n00:00:00	1879843	4	11	2026\n00:00:00	1879978	4	11	2026\n00:11:19	1880073	4	11	2026\n00:05:42	1879991	4	11	2026\n00:02:37	1880203	4	11	2026\n02:06:03	1880175	4	11	2026\n15:15:32	1880092	4	11	2026\n00:26:16	1879975	4	11	2026\n00:05:42	1879991	4	11	2026\n14:38:43	1880363	4	11	2026\n00:33:29	1881081	4	11	2026\n15:31:01	1881687	4	11	2026\n01:08:36	1882715	4	11	2026\n03:10:56	1881535	4	11	2026\n01:28:07	1883269	4	11	2026\n01:33:40	1883409	4	11	2026\n00:00:15	1883630	4	11	2026\n00:00:03	1883887	4	11	2026\n00:00:00	1884205	4	11	2026`;
+(function(){
+  var META = 3600;
+  var MESES = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+  var MESES_LONGOS = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+  var FAIXAS = [[0,900,'Até 15 min'],[900,1800,'15 a 30 min'],[1800,3600,'30 min a 1 h'],[3600,14400,'1 a 4 h'],[14400,86400,'4 a 24 h'],[86400,Infinity,'Mais de 24 h']];
+
+  var dados = raw.split('\n').slice(1).map(function(l){
+    var p = l.split('\t'); if (p.length < 5) return null;
+    var t = p[0].split(':').map(Number);
+    return {seg: t[0] * 3600 + t[1] * 60 + t[2], ch: p[1], q: +p[2], m: +p[3], a: +p[4]};
+  }).filter(function(d){ return d && isFinite(d.seg); });
+
+  var anos = dados.map(function(d){ return d.a; }).filter(function(a, i, l){ return l.indexOf(a) === i; }).sort(function(x, y){ return y - x; });
+  var estado = {ano: anos.length ? anos[0] : 0, q: 0, m: 0};
+  var primeira = true;
+  var $ = function(id){ return document.getElementById(id); };
+
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+  function hms(s){ s = Math.round(s); return pad(Math.floor(s / 3600)) + ':' + pad(Math.floor(s % 3600 / 60)) + ':' + pad(s % 60); }
+  function compacto(s){
+    s = Math.round(s);
+    if (s < 60) return s + 's';
+    if (s < 3600) return Math.round(s / 60) + 'min';
+    if (s < 86400){ var h = Math.floor(s / 3600), m = Math.round(s % 3600 / 60); if (m === 60){ h++; m = 0; } return h + 'h' + pad(m); }
+    return Math.round(s / 3600) + 'h';
+  }
+  function extenso(s){
+    s = Math.round(s); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), partes = [];
+    if (h) partes.push(h + (h === 1 ? ' hora' : ' horas'));
+    if (m || !h) partes.push(m + (m === 1 ? ' minuto' : ' minutos'));
+    return partes.join(' e ');
+  }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function media(l){ return l.length ? l.reduce(function(s, d){ return s + d.seg; }, 0) / l.length : 0; }
+  function mediana(l){
+    if (!l.length) return 0; var v = l.map(function(d){ return d.seg; }).sort(function(a, b){ return a - b; }), k = Math.floor(v.length / 2);
+    return v.length % 2 ? v[k] : (v[k - 1] + v[k]) / 2;
+  }
+  function doAno(d){ return !estado.ano || d.a === estado.ano; }
+  function recorte(){ return dados.filter(function(d){ return doAno(d) && (!estado.q || d.q === estado.q) && (!estado.m || d.m === estado.m); }); }
+  function nomePeriodo(){
+    var ano = estado.ano ? String(estado.ano) : 'todos os anos';
+    if (estado.m) return MESES_LONGOS[estado.m - 1].charAt(0).toUpperCase() + MESES_LONGOS[estado.m - 1].slice(1) + (estado.ano ? ' de ' + estado.ano : ', todos os anos');
+    if (estado.q) return 'Q' + estado.q + (estado.ano ? ' de ' + estado.ano : ', todos os anos');
+    return estado.ano ? 'Ano de ' + estado.ano : 'Todos os anos';
+  }
+
+  /* ---------- filtros ---------- */
+  var selAno = $('f-ano');
+  selAno.innerHTML = anos.map(function(a){ return '<option value="' + a + '">' + a + '</option>'; }).join('') + '<option value="0">Todos os anos</option>';
+  selAno.value = String(estado.ano);
+  selAno.addEventListener('change', function(){ estado.ano = +selAno.value; desenhar(); });
+  var segQ = $('f-quarter');
+  segQ.innerHTML = [0, 1, 2, 3, 4].map(function(q){ return '<button type="button" data-q="' + q + '">' + (q ? 'Q' + q : 'Todos') + '</button>'; }).join('');
+  segQ.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    estado.q = +b.dataset.q;
+    if (estado.m && estado.q && Math.ceil(estado.m / 3) !== estado.q) estado.m = 0;
+    if (!estado.q) estado.m = 0;
+    desenhar();
+  });
+  $('f-mes').addEventListener('click', function(){ estado.m = 0; desenhar(); });
+  $('barras').addEventListener('click', function(e){
+    var b = e.target.closest('.barra'); if (!b || b.disabled) return;
+    var m = +b.dataset.m;
+    if (estado.m === m) estado.m = 0; else { estado.m = m; estado.q = Math.ceil(m / 3); }
+    desenhar();
+  });
+
+  /* ---------- partes do painel ---------- */
+  function desenharAnel(l){
+    var alvo = $('anel-conteudo');
+    $('n-anel').textContent = nomePeriodo() + '.';
+    if (!l.length){ alvo.innerHTML = '<p class="vazio">Nenhum chamado em ' + esc(nomePeriodo().toLowerCase()) + '. Escolha outro período nos filtros acima.</p>'; return; }
+    var med = media(l), dentro = l.filter(function(d){ return d.seg <= META; }).length, pct = dentro / l.length;
+    var lento = l.reduce(function(a, d){ return d.seg > a.seg ? d : a; }), rapido = l.reduce(function(a, d){ return d.seg < a.seg ? d : a; });
+    var C = 2 * Math.PI * 88;
+    alvo.innerHTML =
+      '<div class="anel-area"><div class="anel" role="img" aria-label="Média de ' + esc(extenso(med)) + '. ' + Math.round(pct * 100) + '% dos chamados com primeiro contato em até ' + esc(extenso(META)) + '.">' +
+      '<svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="grad-anel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2F6BFF"/><stop offset=".55" stop-color="#33E1ED"/><stop offset="1" stop-color="#3CF2A5"/></linearGradient></defs>' +
+      '<circle class="trilho" cx="100" cy="100" r="88"/>' +
+      '<circle class="arco' + (primeira ? ' entra' : '') + '" cx="100" cy="100" r="88" stroke-dasharray="' + C.toFixed(2) + '" stroke-dashoffset="' + (primeira ? C : C * (1 - pct)).toFixed(2) + '" data-alvo="' + (C * (1 - pct)).toFixed(2) + '"/></svg>' +
+      '<div class="anel-centro"><div class="anel-valor">' + hms(med) + '</div><div class="anel-legenda">média até o 1º contato</div></div></div></div>' +
+      '<p class="meta"><i aria-hidden="true"></i><span><b>' + Math.round(pct * 100) + '%</b> atendidos em até ' + esc(compacto(META)) + ' (' + dentro + ' de ' + l.length + ')</span></p>' +
+      '<div class="kpis">' +
+        '<div class="kpi"><span>Mediana</span><b>' + hms(mediana(l)) + '</b><small>valor do meio</small></div>' +
+        '<div class="kpi"><span>Mais rápido</span><b>' + hms(rapido.seg) + '</b><small>chamado ' + esc(rapido.ch) + '</small></div>' +
+        '<div class="kpi"><span>Mais demorado</span><b>' + hms(lento.seg) + '</b><small>chamado ' + esc(lento.ch) + '</small></div>' +
+      '</div>';
+    if (primeira){
+      var arco = alvo.querySelector('.arco');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ arco.setAttribute('stroke-dashoffset', arco.dataset.alvo); }); });
+    }
+  }
+
+  function desenharMeses(){
+    var base = dados.filter(doAno), meses = [];
+    for (var m = 1; m <= 12; m++){
+      var l = base.filter(function(d){ return d.m === m; });
+      meses.push({m: m, n: l.length, med: media(l)});
+    }
+    var max = Math.max.apply(null, meses.map(function(x){ return x.med; }).concat([1]));
+    $('n-meses').textContent = (estado.ano ? 'Meses de ' + estado.ano : 'Todos os anos somados') + '. Toque em um mês para ver só os chamados dele.';
+    $('barras').innerHTML = meses.map(function(x){
+      var fora = estado.q && Math.ceil(x.m / 3) !== estado.q;
+      var alt = x.n ? Math.max(4, x.med / max * 100) : 3;
+      var rotulo = MESES_LONGOS[x.m - 1] + (x.n ? ': média de ' + extenso(x.med) + ', ' + x.n + (x.n === 1 ? ' chamado' : ' chamados') : ': sem chamados');
+      return '<button type="button" class="barra' + (fora ? ' fora' : '') + '" data-m="' + x.m + '" aria-pressed="' + (estado.m === x.m) + '"' + (x.n ? '' : ' disabled') + ' aria-label="' + esc(rotulo) + '" title="' + esc(rotulo) + '">' +
+        '<span class="v">' + (x.n ? compacto(x.med) : '') + '</span>' +
+        '<span class="col' + (x.n ? '' : ' vazia') + '" style="height:' + alt.toFixed(1) + '%"></span>' +
+        '<span class="m">' + MESES[x.m - 1] + '</span></button>';
+    }).join('');
+  }
+
+  function desenharQuarters(){
+    var base = dados.filter(doAno), qs = [1, 2, 3, 4].map(function(q){ var l = base.filter(function(d){ return d.q === q; }); return {q: q, n: l.length, med: media(l)}; });
+    var max = Math.max.apply(null, qs.map(function(x){ return x.med; }).concat([1]));
+    $('n-quarter').textContent = estado.ano ? 'Quarters de ' + estado.ano + '.' : 'Todos os anos somados.';
+    $('quarters').innerHTML = qs.map(function(x){
+      return '<li class="' + (estado.q === x.q ? 'ativo' : '') + '"><span class="rot">Q' + x.q + '<small>' + (x.n ? x.n + (x.n === 1 ? ' chamado' : ' chamados') : 'sem chamados') + '</small></span>' +
+        '<span class="trilha" aria-hidden="true"><i style="width:' + (x.n ? Math.max(2, x.med / max * 100) : 0).toFixed(1) + '%"></i></span>' +
+        '<span class="num">' + (x.n ? hms(x.med) : '—') + '</span></li>';
+    }).join('');
+  }
+
+  function desenharFaixas(l){
+    if (!l.length){ $('faixas').innerHTML = '<p class="vazio">Sem chamados neste período.</p>'; return; }
+    var cont = FAIXAS.map(function(f){ return l.filter(function(d){ return d.seg >= f[0] && d.seg < f[1]; }).length; });
+    var max = Math.max.apply(null, cont.concat([1]));
+    $('faixas').innerHTML = '<ul class="linhas">' + FAIXAS.map(function(f, i){
+      var pct = cont[i] / l.length * 100;
+      return '<li><span class="rot">' + f[2] + '</span><span class="trilha" aria-hidden="true"><i style="width:' + (cont[i] ? Math.max(2, cont[i] / max * 100) : 0).toFixed(1) + '%"></i></span>' +
+        '<span class="num">' + Math.round(pct) + '%<small>' + cont[i] + (cont[i] === 1 ? ' chamado' : ' chamados') + '</small></span></li>';
+    }).join('') + '</ul>';
+  }
+
+  function desenharLentos(l){
+    if (!l.length){ $('lentos').innerHTML = '<p class="vazio">Sem chamados neste período.</p>'; return; }
+    var top = l.slice().sort(function(a, b){ return b.seg - a.seg; }).slice(0, 10);
+    $('lentos').innerHTML = '<div class="tabela-rolagem"><table><thead><tr><th scope="col">#</th><th scope="col">Chamado</th><th scope="col">Mês</th><th scope="col" class="t">Tempo até o 1º contato</th></tr></thead><tbody>' +
+      top.map(function(d, i){
+        return '<tr><td class="pos">' + (i + 1) + '</td><td>' + esc(d.ch) + '</td><td>' + MESES_LONGOS[d.m - 1] + ' de ' + d.a + '</td><td class="t"><span class="tempo-forte">' + hms(d.seg) + '</span></td></tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+
+  function desenhar(){
+    var l = recorte();
+    $('periodo').textContent = nomePeriodo();
+    selAno.value = String(estado.ano);
+    [].forEach.call(segQ.children, function(b){ b.setAttribute('aria-pressed', String(+b.dataset.q === estado.q)); });
+    var chip = $('f-mes'); chip.hidden = !estado.m;
+    if (estado.m) $('f-mes-txt').textContent = MESES_LONGOS[estado.m - 1].charAt(0).toUpperCase() + MESES_LONGOS[estado.m - 1].slice(1);
+    desenharAnel(l); desenharMeses(); desenharQuarters(); desenharFaixas(l); desenharLentos(l);
+    primeira = false;
+  }
+  desenhar();
+})();
+</script>
+<!--pc-atualizar:inicio-->
+<style>
+#pcx-barra{--pcx-fundo:rgba(12,20,78,.92);--pcx-texto:#EEF3FF;--pcx-suave:#A9B6E8;--pcx-acento:#33E1ED;--pcx-acento-2:#5BEBF4;
+  position:fixed;z-index:2147483000;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));
+  display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:6px 6px 6px 14px;border-radius:999px;
+  background:var(--pcx-fundo);color:var(--pcx-texto);box-shadow:0 0 0 1px rgba(122,160,255,.28),0 14px 36px rgba(2,6,40,.6);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);font:500 13px/1.3 "Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:dark;-webkit-font-smoothing:antialiased}
+#pcx-barra .pcx-info{display:flex;flex-direction:column;min-width:0}
+#pcx-barra .pcx-info b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:34ch}
+#pcx-barra .pcx-info small{color:var(--pcx-suave);font-size:11.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
+#pcx-barra button{font:inherit;cursor:pointer;border:0;border-radius:999px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+#pcx-atualizar{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;min-width:44px;padding:0 16px;
+  background:var(--pcx-acento);color:#06123F;font-weight:600;white-space:nowrap;transition:background-color .15s ease;box-shadow:0 0 18px -4px rgba(51,225,237,.7)}
+@media (hover:hover){#pcx-atualizar:hover{background:var(--pcx-acento-2)}}
+#pcx-atualizar:focus-visible,#pcx-trocar:focus-visible{outline:2px solid #fff;outline-offset:2px}
+#pcx-atualizar[aria-busy="true"]{cursor:progress;opacity:.85}
+#pcx-atualizar svg{width:16px;height:16px;flex:none}
+#pcx-atualizar[aria-busy="true"] svg{animation:pcx-gira 1s linear infinite}
+@keyframes pcx-gira{to{transform:rotate(360deg)}}
+#pcx-trocar{min-height:44px;padding:0 8px;background:transparent;color:var(--pcx-suave);font-size:12px;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+@media (hover:hover){#pcx-trocar:hover{color:#fff}}
+#pcx-msg{position:fixed;z-index:2147483000;right:max(16px,env(safe-area-inset-right));bottom:calc(max(16px,env(safe-area-inset-bottom)) + 66px);
+  max-width:min(420px,calc(100vw - 32px));padding:10px 14px;border-radius:12px;background:#0C144E;color:#EEF3FF;
+  font:400 13px/1.45 "Geist",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;box-shadow:0 10px 28px rgba(0,0,0,.28);
+  border-left:4px solid #33E1ED;white-space:pre-line;overflow-wrap:anywhere}
+#pcx-msg.pcx-erro{border-left-color:#DC2626}
+#pcx-msg.pcx-ok{border-left-color:#3CF2A5}
+#pcx-msg[hidden]{display:none}
+@media (max-width:560px){#pcx-barra .pcx-info{display:none}#pcx-barra{padding:6px}}
+@media print{#pcx-barra,#pcx-msg{display:none!important}}
+@media (prefers-reduced-motion:reduce){#pcx-atualizar,#pcx-atualizar svg{transition:none;animation:none!important}}
+</style>
+
+<div id="pcx-barra" role="region" aria-label="Atualização dos dados">
+  <div class="pcx-info"><b id="pcx-fonte"></b><small id="pcx-quando"></small></div>
+  <button id="pcx-trocar" type="button" hidden>Trocar planilha</button>
+  <button id="pcx-atualizar" type="button" aria-describedby="pcx-quando">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+    <span id="pcx-rotulo">Atualizar dados</span>
+  </button>
+</div>
+<div id="pcx-msg" role="status" aria-live="polite" hidden></div>
+<input id="pcx-arquivo" type="file" accept=".xls,.xlsx,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" hidden>
+<script>
+(function(){
+  var C = window.__PC_CFG__, D = window.__PC__;
+  var botao = document.getElementById('pcx-atualizar'), rotulo = document.getElementById('pcx-rotulo');
+  var trocar = document.getElementById('pcx-trocar'), entrada = document.getElementById('pcx-arquivo');
+  var aviso = document.getElementById('pcx-msg');
+  var temSeletor = typeof window.showOpenFilePicker === 'function';
+  var fonte = D ? {arquivo: D.arquivo, modificado: D.modificado, origem: 'lida pelo botão'}
+                : {arquivo: C.arquivo, modificado: C.modificado, origem: 'gerada pelo script'};
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function quando(ms){ var d = new Date(ms); return pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear() + ' às ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); }
+  document.getElementById('pcx-fonte').textContent = fonte.arquivo;
+  document.getElementById('pcx-quando').textContent = 'Planilha salva em ' + quando(fonte.modificado);
+  document.getElementById('pcx-barra').title = 'Dados ' + fonte.origem + '. Pasta da planilha: ' + C.pasta;
+
+  var tempo;
+  function mensagem(texto, tipo, duracao){
+    clearTimeout(tempo);
+    aviso.textContent = texto; aviso.className = tipo ? 'pcx-' + tipo : ''; aviso.hidden = false;
+    if (duracao) tempo = setTimeout(function(){ aviso.hidden = true; }, duracao);
+  }
+  function ocupado(sim){
+    botao.setAttribute('aria-busy', sim ? 'true' : 'false');
+    botao.disabled = sim;
+    rotulo.textContent = sim ? 'Atualizando…' : 'Atualizar dados';
+  }
+  function Falha(texto){ var e = new Error(texto); e.amigavel = true; return e; }
+
+  /* ---------- planilha guardada (Edge/Chrome) ---------- */
+  function banco(){
+    return new Promise(function(ok, falha){
+      var r = indexedDB.open('primeiro-contato-n2', 1);
+      r.onupgradeneeded = function(){ r.result.createObjectStore('arquivos'); };
+      r.onsuccess = function(){ ok(r.result); }; r.onerror = function(){ falha(r.error); };
+    });
+  }
+  function lerGuardada(){
+    return banco().then(function(db){ return new Promise(function(ok){
+      var q = db.transaction('arquivos').objectStore('arquivos').get('planilha');
+      q.onsuccess = function(){ ok(q.result || null); }; q.onerror = function(){ ok(null); };
+    }); }).catch(function(){ return null; });
+  }
+  function guardar(h){
+    return banco().then(function(db){ return new Promise(function(ok){
+      var t = db.transaction('arquivos', 'readwrite'); t.objectStore('arquivos').put(h, 'planilha');
+      t.oncomplete = ok; t.onerror = ok;
+    }); }).catch(function(){});
+  }
+  function arquivoGuardado(pedir){
+    if (!temSeletor) return Promise.resolve(null);
+    return lerGuardada().then(function(h){
+      if (!h) return null;
+      return h.queryPermission({mode: 'read'}).then(function(p){
+        return p === 'granted' || !pedir ? p : h.requestPermission({mode: 'read'});
+      }).then(function(p){ return p === 'granted' ? h.getFile() : null; });
+    }).catch(function(){ return null; });
+  }
+  function caminhoAmigavel(){
+    var partes = C.pasta.split(/[\\\/]+/), i = partes.map(function(x){ return x.toLowerCase(); }).indexOf('desktop');
+    return i === -1 ? C.pasta : ['Área de Trabalho'].concat(partes.slice(i + 1)).join(' › ');
+  }
+  function escolher(){
+    if (temSeletor){
+      return lerGuardada().then(function(h){
+        mensagem(h ? 'Escolha a planilha de Primeiro Contato.'
+                   : 'Só na primeira vez: aponte a planilha para o navegador.\nAbra ' + caminhoAmigavel() + '\ne escolha ' + C.arquivo + '.\nDepois disso, o botão lê esse arquivo direto, sem abrir esta janela.', 'info');
+        return window.showOpenFilePicker({id: 'primeiro-contato-planilha', startIn: h || 'desktop', multiple: false,
+          types: [{description: 'Planilhas do Excel',
+            accept: {'application/vnd.ms-excel': ['.xls'], 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']}}]});
+      }).then(function(hs){ return guardar(hs[0]).then(function(){ trocar.hidden = false; return hs[0].getFile(); }); });
+    }
+    mensagem('Escolha a planilha de Primeiro Contato.\nPasta: ' + C.pasta + '\nArquivo: ' + C.arquivo, 'info');
+    return new Promise(function(ok, falha){
+      entrada.value = '';
+      entrada.onchange = function(){ entrada.files[0] ? ok(entrada.files[0]) : falha({name: 'AbortError'}); };
+      entrada.oncancel = function(){ falha({name: 'AbortError'}); };
+      entrada.click();
+    });
+  }
+  function carregarLeitor(){
+    if (window.XLSX) return Promise.resolve();
+    return new Promise(function(ok, falha){
+      var s = document.createElement('script');
+      s.src = C.sheetjs;
+      s.onload = function(){ window.XLSX ? ok() : falha(Falha('O leitor de Excel não carregou.')); };
+      s.onerror = function(){ falha(Falha('Não consegui baixar o leitor de Excel (SheetJS).\nO botão precisa de internet para ler a planilha. Sem internet, rode o script como antes.')); };
+      document.head.appendChild(s);
+    });
+  }
+
+  /* ---------- mesmas regras do script Python ---------- */
+  /* textos que o pandas trata como célula vazia */
+  var NA = ['', '#N/A', '#N/A N/A', '#NA', '-1.#IND', '-1.#QNAN', '-NaN', '-nan', '1.#IND', '1.#QNAN', '<NA>', 'N/A', 'NA', 'NULL', 'NaN', 'None', 'n/a', 'nan', 'null'];
+  function celula(ws, r, c){
+    var x = ws[XLSX.utils.encode_cell({r: r, c: c})];
+    if (!x || x.t === 'z' || x.t === 'e') return null;
+    if (x.t === 's' && NA.indexOf(x.v) !== -1) return null;
+    return x;
+  }
+  function ehData(x){ return x.t === 'n' && !!x.z && XLSX.SSF.is_date(x.z); }
+  function hms(seg){ return pad2(Math.floor(seg / 3600)) + ':' + pad2(Math.floor(seg % 3600 / 60)) + ':' + pad2(seg % 60); }
+  function pad2(n){ return n < 10 ? '0' + n : String(n); }
+  function tempoParaTexto(x){
+    if (!x) return null;
+    var seg;
+    if (x.t === 'n' && ehData(x)){
+      /* hora/duração do Excel; acima de 60 dias o Excel conta o dia 29/02/1900 inexistente */
+      seg = Math.round((x.v >= 61 ? x.v - 1 : x.v) * 86400);
+    } else if (x.t === 'n'){
+      if (Number.isInteger(x.v) || !(x.v >= 0 && x.v < 100)) return null;   /* ex.: nº do chamado no lugar do tempo */
+      seg = Math.round(x.v * 86400);
+    } else if (x.t === 's' && /^\d{1,3}:\d{2}:\d{2}$/.test(x.v.trim())){
+      var p = x.v.trim().split(':').map(Number); seg = p[0] * 3600 + p[1] * 60 + p[2];
+    } else return null;
+    return seg < 0 ? null : hms(seg);
+  }
+  function inteiro(x){
+    if (!x) throw 0;
+    if (x.t === 'b') return x.v ? 1 : 0;
+    if (x.t === 'n'){ if (ehData(x) || !isFinite(x.v)) throw 0; return Math.trunc(x.v); }
+    if (x.t === 's' && /^\s*[+-]?\d+(_\d+)*\s*$/.test(x.v)) return parseInt(x.v.replace(/[\s_]/g, ''), 10);
+    throw 0;
+  }
+  function texto(x){ return x ? String(x.t === 'n' && Number.isInteger(x.v) ? x.v : x.v) : ''; }
+
+  function processar(buffer){
+    var wb = XLSX.read(buffer, {type: 'array', cellNF: true, cellDates: false});
+    var ws = wb.Sheets[wb.SheetNames[0]];
+    if (!ws || !ws['!ref']) throw Falha('A primeira aba da planilha está vazia.');
+    var faixa = XLSX.utils.decode_range(ws['!ref']);
+    if (faixa.e.c < 4) throw Falha('A planilha precisa ter 5 colunas (Tempo, Chamado, Quarter, Mes, Ano).');
+    var anoPadrao = new Date().getFullYear(), linhas = [], avisos = [];
+    for (var r = 1; r <= faixa.e.r; r++){
+      var tp = celula(ws, r, 0), ch = celula(ws, r, 1), qt = celula(ws, r, 2), ms = celula(ws, r, 3), an = celula(ws, r, 4);
+      if (!ch) continue;
+      var n = r + 1, tempo = tempoParaTexto(tp);
+      if (tempo === null){ avisos.push('linha ' + n + ': chamado ' + texto(ch) + ' ignorado (Tempo inválido)'); continue; }
+      var chamado, quarter, mes, ano;
+      try { chamado = inteiro(ch); quarter = inteiro(qt); mes = inteiro(ms); ano = inteiro(an); }
+      catch (e){ avisos.push('linha ' + n + ': chamado ' + texto(ch) + ' ignorado (Quarter/Mês/Ano não numérico)'); continue; }
+      if (mes < 1 || mes > 12){ avisos.push('linha ' + n + ': chamado ' + chamado + ' ignorado (Mês inválido: ' + mes + ')'); continue; }
+      var certo = Math.floor((mes - 1) / 3) + 1;
+      if (quarter !== certo){ avisos.push('linha ' + n + ': chamado ' + chamado + ' Quarter ' + quarter + ' corrigido para ' + certo); quarter = certo; }
+      if (ano < 2000 || ano > 2100){ avisos.push('linha ' + n + ': chamado ' + chamado + ' Ano ' + ano + ' corrigido para ' + anoPadrao); ano = anoPadrao; }
+      linhas.push(tempo + '\t' + chamado + '\t' + quarter + '\t' + mes + '\t' + ano);
+    }
+    if (!linhas.length) throw Falha('Nenhuma linha válida na planilha; o painel não foi alterado.');
+    return {raw: 'Tempo\tChamado\tQuarter\tMes\tAno\n' + linhas.join('\n'), total: linhas.length, avisos: avisos};
+  }
+
+  /* ---------- atualizar ---------- */
+  function lerArquivo(arquivo){
+    mensagem('Lendo ' + arquivo.name + '…', 'info');
+    return carregarLeitor().then(function(){ return arquivo.arrayBuffer(); }).then(function(buf){
+      var r = processar(buf);
+      var pacote = {lidoEm: Date.now(), arquivo: arquivo.name, modificado: arquivo.lastModified, raw: r.raw, total: r.total};
+      try { localStorage.setItem(C.chave, JSON.stringify(pacote)); }
+      catch (e) { throw Falha('O navegador não deixou guardar os dados lidos (armazenamento cheio ou bloqueado).'); }
+      var txt = 'Painel atualizado: ' + r.total + ' registros válidos.';
+      if (r.avisos.length){
+        txt += '\n' + r.avisos.length + (r.avisos.length === 1 ? ' aviso' : ' avisos') + ' (detalhes no console do navegador, F12).';
+        console.warn('Avisos da leitura da planilha:\n' + r.avisos.join('\n'));
+      }
+      try { sessionStorage.setItem('pcx-aviso', txt); sessionStorage.setItem('pcx-avisos', JSON.stringify(r.avisos)); } catch (e) {}
+      location.reload();
+    });
+  }
+  function atualizar(escolherOutra){
+    ocupado(true);
+    (escolherOutra ? Promise.resolve(null) : arquivoGuardado(true))
+      .then(function(arquivo){ return arquivo || escolher(); })
+      .then(lerArquivo)
+      .catch(function(e){
+        ocupado(false);
+        if (e && e.name === 'AbortError'){ aviso.hidden = true; return; }
+        if (e && e.name === 'NotFoundError'){ mensagem('A planilha guardada não foi encontrada (foi movida ou renomeada?).\nUse "Trocar planilha" para escolher de novo.', 'erro', 9000); return; }
+        mensagem(e && e.amigavel ? e.message : 'Não foi possível ler a planilha.\n' + (e && e.message ? e.message : e), 'erro', 9000);
+      });
+  }
+  botao.addEventListener('click', function(){ atualizar(false); });
+  trocar.addEventListener('click', function(){ atualizar(true); });
+  if (temSeletor) lerGuardada().then(function(h){ if (h) trocar.hidden = false; });
+
+  try {
+    var ok = sessionStorage.getItem('pcx-aviso'), lista = JSON.parse(sessionStorage.getItem('pcx-avisos') || '[]');
+    if (ok){
+      sessionStorage.removeItem('pcx-aviso'); sessionStorage.removeItem('pcx-avisos');
+      mensagem(ok, lista.length ? 'info' : 'ok', 7000);
+      if (lista.length) console.warn('Avisos da leitura da planilha:\n' + lista.join('\n'));
+    }
+  } catch (e) {}
+
+  /* com dados lidos pelo botão, ajusta o texto fixo "registros válidos: N" */
+  if (D){
+    var ajustar = function(){
+      var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n;
+      while ((n = w.nextNode())){
+        if (n.parentNode && n.parentNode.closest && n.parentNode.closest('#pcx-barra,#pcx-msg,script,style')) continue;
+        var t = n.nodeValue, novo = t.replace(/registros válidos: \d+/g, 'registros válidos: ' + D.total);
+        if (novo !== t) n.nodeValue = novo;
+      }
+    };
+    ajustar(); setTimeout(ajustar, 800);
+  }
+
+  /* ao abrir: se a planilha guardada foi salva depois da última leitura, atualiza sozinho */
+  arquivoGuardado(false).then(function(arquivo){
+    if (arquivo && arquivo.lastModified > fonte.modificado + 1000){ ocupado(true); return lerArquivo(arquivo); }
+  }).catch(function(){ ocupado(false); });
+})();
+</script><!--pc-atualizar:fim--></body>
+</html>
